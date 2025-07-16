@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tu Carnet Digital</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" href="img/icon.png" type="image/png" />
+</head>
+<body>
+  <div class="container">
+    <h1>Tu Carnet Digital</h1>
+    <p><strong>¿NO TIENES CONEXIÓN?</strong> Descarga y muestra tu carnet.</p>
+    <img src="img/carnet.png" alt="Carnet" class="responsive-img" />
+    <a href="img/carnet.png" download class="download-btn">Descargar Carnet</a>
+    <p class="nota">Puedes instalar esta página como app. Funciona sin conexión.</p>
+  </div>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js').then(() => {
+        console.log('Service Worker registrado');
+      });
+    }
+  </script>
+</body>
+</html>
