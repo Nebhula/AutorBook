@@ -150,58 +150,56 @@
   }
 </style>
 
-<div id='pwaTip'>
-  <div class='pwa-banner'>
-    <div class='pwa-content'>
-      <img alt='App Icon' class='pwa-icon' src='https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiDQ17rpDz9FK6Kgn3lQ2K1_R5o9brPkhtY9U5X0Ma8YyejvN-z3VDFGnHU6ocIuIVX0ANQ9tIN5ExYlPSgF3reNaiQg926Ie8qiHTBd1RhTcmEuWYKtQJjD5YobUY2fzNIsmiTQzxJsZt8BmWSO76ziQoB9lzkvE0ed8rnzZ-836B4dWMyogofSwh8MZgJ/s1600/Dise%C3%B1o%20sin%20t%C3%ADtulo%20%2845%29.png'/>
-      <div class='tip-text'>Para una mejor experiencia</div>
+<div id="pwaTip">
+  <div class="pwa-banner">
+    <div class="pwa-content">
+      <img alt="App Icon" class="pwa-icon" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiDQ17rpDz9FK6Kgn3lQ2K1_R5o9brPkhtY9U5X0Ma8YyejvN-z3VDFGnHU6ocIuIVX0ANQ9tIN5ExYlPSgF3reNaiQg926Ie8qiHTBd1RhTcmEuWYKtQJjD5YobUY2fzNIsmiTQzxJsZt8BmWSO76ziQoB9lzkvE0ed8rnzZ-836B4dWMyogofSwh8MZgJ/s1600/Dise%C3%B1o%20sin%20t%C3%ADtulo%20%2845%29.png"/>
+      <div class="tip-text">Para una mejor experiencia</div>
     </div>
-    <button id='installBtn'>
-      <i class='fas fa-mobile-alt'/>
+    <button id="installBtn">
+      <i class="fas fa-mobile-alt"></i>
       INSTALAR APP
     </button>
-    <button class='close-btn' id='closeTip'>&#215;</button>
+    <button class="close-btn" id="closeTip">&#215;</button>
   </div>
 </div>
 
 <script>
   let deferredPrompt;
 
-  window.addEventListener(&#39;beforeinstallprompt&#39;, (e) =&gt; {
+  window.addEventListener('beforeinstallprompt', (e) => {
     e.preventDefault();
     deferredPrompt = e;
-    document.getElementById(&#39;pwaTip&#39;).style.display = &#39;block&#39;;
+    if (localStorage.getItem('pwaTipClosed') !== 'true') {
+      document.getElementById('pwaTip').style.display = 'block';
+    }
   });
 
-  document.getElementById(&#39;installBtn&#39;).addEventListener(&#39;click&#39;, () =&gt; {
+  document.getElementById('installBtn').addEventListener('click', () => {
     if (deferredPrompt) {
       deferredPrompt.prompt();
-      deferredPrompt.userChoice.then((choiceResult) =&gt; {
-        if (choiceResult.outcome === &#39;accepted&#39;) {
-          document.getElementById(&#39;pwaTip&#39;).style.display = &#39;none&#39;;
+      deferredPrompt.userChoice.then((choiceResult) => {
+        if (choiceResult.outcome === 'accepted') {
+          document.getElementById('pwaTip').style.display = 'none';
         }
         deferredPrompt = null;
       });
     }
   });
 
-  document.getElementById(&#39;closeTip&#39;).addEventListener(&#39;click&#39;, () =&gt; {
-    document.getElementById(&#39;pwaTip&#39;).style.display = &#39;none&#39;;
-    localStorage.setItem(&#39;pwaTipClosed&#39;, &#39;true&#39;);
+  document.getElementById('closeTip').addEventListener('click', () => {
+    document.getElementById('pwaTip').style.display = 'none';
+    localStorage.setItem('pwaTipClosed', 'true');
   });
 
-  window.addEventListener(&#39;appinstalled&#39;, () =&gt; {
-    document.getElementById(&#39;pwaTip&#39;).style.display = &#39;none&#39;;
+  window.addEventListener('appinstalled', () => {
+    document.getElementById('pwaTip').style.display = 'none';
   });
 
-  if (&#39;serviceWorker&#39; in navigator) {
-    navigator.serviceWorker.register(&#39;/sw.js&#39;)
-      .then(reg =&gt; console.log(&#39;Service Worker registrado&#39;))
-      .catch(err =&gt; console.error(&#39;Error al registrar SW:&#39;, err));
-  }
-
-  if (localStorage.getItem(&#39;pwaTipClosed&#39;) === &#39;true&#39;) {
-    document.getElementById(&#39;pwaTip&#39;).style.display = &#39;none&#39;;
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/sw.js')
+      .then(reg => console.log('✅ SW registrado'))
+      .catch(err => console.error('❌ Error SW:', err));
   }
 </script>
 
