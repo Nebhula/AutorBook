@@ -195,7 +195,7 @@
   });
 
   if (&#39;serviceWorker&#39; in navigator) {
-    navigator.serviceWorker.register(&#39;https://asdfdasfdasdfs.blogspot.com/p/sw_12.html&#39;)
+    navigator.serviceWorker.register(&#39;/sw.js&#39;)
       .then(reg =&gt; console.log(&#39;Service Worker registrado&#39;))
       .catch(err =&gt; console.error(&#39;Error al registrar SW:&#39;, err));
   }
