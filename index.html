@@ -693,6 +693,77 @@
         .social-icons {
             justify-content: center;
         }
+
+        /* --- Nuevos estilos para el modal de libro --- */
+        .book-modal-header {
+            display: flex;
+            flex-direction: column; /* Por defecto en columna */
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .book-modal-cover-wrapper {
+            flex-shrink: 0; /* Evita que la imagen se encoja */
+        }
+
+        .book-modal-text-wrapper {
+            text-align: center; /* Centra el texto debajo de la imagen por defecto */
+        }
+
+        /* Media query para pantallas medianas y grandes */
+        @media (min-width: 600px) {
+            .book-modal-header {
+                flex-direction: row; /* En fila */
+                text-align: left; /* Alinea el texto a la izquierda */
+                align-items: flex-start; /* Alinea elementos al inicio */
+            }
+
+            .book-modal-text-wrapper {
+                text-align: left; /* Alinea el texto a la izquierda */
+                flex-grow: 1; /* Permite que el texto crezca */
+            }
+
+             .book-modal-title {
+                 text-align:left; /* Asegura alineación izquierda del título */
+             }
+             .book-modal-author {
+                 text-align:left; /* Asegura alineación izquierda del autor */
+             }
+             .book-modal-year {
+                 text-align:left; /* Asegura alineación izquierda del año */
+             }
+        }
+
+        .book-modal-buttons {
+            display: flex;
+            flex-wrap: wrap; /* Permite que los botones se envuelvan en pantallas pequeñas */
+            gap: 10px;
+            justify-content: center; /* Centra los botones */
+            margin-top: 15px;
+        }
+
+        .book-modal-buy {
+            /* Reutilizamos el estilo existente, pero ajustamos para botones múltiples */
+            flex: 1 1 auto; /* Permite crecer/shrink pero con base auto */
+            min-width: 120px; /* Ancho mínimo para evitar botones demasiado pequeños */
+            text-align: center;
+            padding: 10px 15px; /* Ajuste de padding */
+            text-decoration: none; /* Asegura que se vea como botón */
+            display: inline-block; /* Asegura que se comporte como bloque en línea */
+             border-radius: 6px; /* Añadido border-radius */
+        }
+        /* Estilos específicos para el botón de comprar al autor */
+        .book-modal-buy-direct {
+            background-color: #27ae60; /* Color diferente, por ejemplo, verde */
+            color: white;
+            border: 1px solid #27ae60;
+        }
+        .book-modal-buy-direct:hover {
+            background-color: #219653;
+            border-color: #219653;
+        }
+        /* ----------------------- */
     </style>
 </head>
 <body>
@@ -754,37 +825,37 @@
             <h2 class="section-title">Mis Libros Publicados</h2>
             <div class="book-container">
                 <!-- Libro 1 -->
-                <div class="book-item" onclick="openBookModal('El Silencio del Río', 'Juan Pérez', '2018', 'https://m.media-amazon.com/images/I/61lJydEa4RL.jpg', 'Novela ganadora del Premio Nacional de Literatura 2019. Una historia conmovedora sobre las relaciones humanas en un pequeño pueblo costero. Explora temas de perdón, redención y el poder sanador de la naturaleza.', 'https://www.youtube.com/embed/ETZwSTJUfw8?si=s1WeaHTzY51Fh9lA')">
+                <div class="book-item" onclick="openBookModal('El Silencio del Río', 'Juan Pérez', '2018', 'https://m.media-amazon.com/images/I/61lJydEa4RL.jpg', 'Novela ganadora del Premio Nacional de Literatura 2019. Una historia conmovedora sobre las relaciones humanas en un pequeño pueblo costero. Explora temas de perdón, redención y el poder sanador de la naturaleza.', 'https://www.youtube.com/embed/ETZwSTJUfw8?si=s1WeaHTzY51Fh9lA', 'https://www.editorialautor.com/comprar/el-silencio-del-rio')">
                     <img src="https://m.media-amazon.com/images/I/61lJydEa4RL.jpg" alt="El Silencio del Río" class="book-cover">
                     <div class="book-title">El Silencio del Río</div>
                     <div class="book-year">2018</div>
                 </div>
                 <!-- Libro 2 -->
-                <div class="book-item" onclick="openBookModal('Crónicas del Desierto', 'Juan Pérez', '2020', 'https://images.unsplash.com/photo-1589998059171-988d887df646?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80', 'Una colección de relatos cortos ambientados en el desierto de Atacama. Cada historia revela facetas únicas de la vida en uno de los lugares más áridos del planeta, explorando la resiliencia humana y la belleza oculta del paisaje.', 'https://www.youtube.com/embed/dQw4w9WgXcQ')">
+                <div class="book-item" onclick="openBookModal('Crónicas del Desierto', 'Juan Pérez', '2020', 'https://images.unsplash.com/photo-1589998059171-988d887df646?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80', 'Una colección de relatos cortos ambientados en el desierto de Atacama. Cada historia revela facetas únicas de la vida en uno de los lugares más áridos del planeta, explorando la resiliencia humana y la belleza oculta del paisaje.', 'https://www.youtube.com/embed/dQw4w9WgXcQ', '')">
                     <img src="https://images.unsplash.com/photo-1589998059171-988d887df646?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Crónicas del Desierto" class="book-cover">
                     <div class="book-title">Crónicas del Desierto</div>
                     <div class="book-year">2020</div>
                 </div>
                 <!-- Libro 3 -->
-                <div class="book-item" onclick="openBookModal('La Última Página', 'Juan Pérez', '2022', 'https://images.unsplash.com/photo-1531346878377-a5be20888e57?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80', 'Thriller psicológico que explora los límites entre la realidad y la ficción. Un escritor descubre que las páginas finales de su novela se están escribiendo solas, revelando secretos de su propio pasado que preferiría mantener ocultos.', '')">
+                <div class="book-item" onclick="openBookModal('La Última Página', 'Juan Pérez', '2022', 'https://images.unsplash.com/photo-1531346878377-a5be20888e57?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80', 'Thriller psicológico que explora los límites entre la realidad y la ficción. Un escritor descubre que las páginas finales de su novela se están escribiendo solas, revelando secretos de su propio pasado que preferiría mantener ocultos.', '', '')">
                     <img src="https://images.unsplash.com/photo-1531346878377-a5be20888e57?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="La Última Página" class="book-cover">
                     <div class="book-title">La Última Página</div>
                     <div class="book-year">2022</div>
                 </div>
                 <!-- Libro 4 -->
-                <div class="book-item" onclick="openBookModal('Memorias del Viento', 'Juan Pérez', '2015', 'https://images.unsplash.com/photo-1512820790803-83ca734da794?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80', 'Autobiografía poética que recorre la vida del autor desde su infancia en una pequeña ciudad hasta su consolidación como escritor reconocido. Un viaje introspectivo lleno de anécdotas, reflexiones y el amor por las palabras.', '')">
+                <div class="book-item" onclick="openBookModal('Memorias del Viento', 'Juan Pérez', '2015', 'https://images.unsplash.com/photo-1512820790803-83ca734da794?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80', 'Autobiografía poética que recorre la vida del autor desde su infancia en una pequeña ciudad hasta su consolidación como escritor reconocido. Un viaje introspectivo lleno de anécdotas, reflexiones y el amor por las palabras.', '', '')">
                     <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Memorias del Viento" class="book-cover">
                     <div class="book-title">Memorias del Viento</div>
                     <div class="book-year">2015</div>
                 </div>
                 <!-- Libro 5 -->
-                <div class="book-item" onclick="openBookModal('El Laberinto de los Sueños', 'Juan Pérez', '2019', 'https://images.unsplash.com/photo-1495640388908-05fa85288e61?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80', 'Fantasía épica ambientada en un mundo donde los sueños cobran vida. Un joven debe navegar por un reino onírico para salvar a su pueblo de una pesadilla que amenaza con destruir la realidad. Una aventura llena de criaturas mágicas y giros inesperados.', '')">
+                <div class="book-item" onclick="openBookModal('El Laberinto de los Sueños', 'Juan Pérez', '2019', 'https://images.unsplash.com/photo-1495640388908-05fa85288e61?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80', 'Fantasía épica ambientada en un mundo donde los sueños cobran vida. Un joven debe navegar por un reino onírico para salvar a su pueblo de una pesadilla que amenaza con destruir la realidad. Una aventura llena de criaturas mágicas y giros inesperados.', '', '')">
                     <img src="https://images.unsplash.com/photo-1495640388908-05fa85288e61?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="El Laberinto de los Sueños" class="book-cover">
                     <div class="book-title">El Laberinto de los Sueños</div>
                     <div class="book-year">2019</div>
                 </div>
                 <!-- Libro 6 -->
-                <div class="book-item" onclick="openBookModal('Diálogos con el Silencio', 'Juan Pérez', '2021', 'https://images.unsplash.com/photo-1535732820275-9ffd998cac22?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80', 'Ensayo filosófico sobre la importancia del silencio en la comunicación moderna. El autor explora cómo el exceso de ruido en la era digital afecta nuestra capacidad de escuchar, reflexionar y conectar con los demás de manera auténtica.', '')">
+                <div class="book-item" onclick="openBookModal('Diálogos con el Silencio', 'Juan Pérez', '2021', 'https://images.unsplash.com/photo-1535732820275-9ffd998cac22?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80', 'Ensayo filosófico sobre la importancia del silencio en la comunicación moderna. El autor explora cómo el exceso de ruido en la era digital afecta nuestra capacidad de escuchar, reflexionar y conectar con los demás de manera auténtica.', '', '')">
                     <img src="https://images.unsplash.com/photo-1535732820275-9ffd998cac22?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Diálogos con el Silencio" class="book-cover">
                     <div class="book-title">Diálogos con el Silencio</div>
                     <div class="book-year">2021</div>
@@ -869,17 +940,34 @@
         <button class="modal-action" onclick="closeModal()">ENTENDIDO</button>
     </div>
 </div>
-<!-- Modal de libro -->
+<!-- Modal de libro (Actualizado) -->
 <div class="modal" id="bookModal">
     <div class="modal-content book-modal-content">
         <button class="modal-close" onclick="closeModal()">×</button>
-        <img id="bookModalCover" src="" alt="Portada del libro" class="book-modal-cover">
-        <div id="bookModalTitle" class="book-modal-title"></div>
-        <div id="bookModalAuthor" class="book-modal-author"></div>
-        <div id="bookModalYear" class="book-modal-year"></div>
-        <div id="bookModalVideo" class="book-video-container"></div> <!-- Video aquí -->
-        <div id="bookModalInfo" class="book-modal-info"></div> <!-- Texto después del video -->
-        <a id="bookModalBuy" href="#" class="book-modal-buy" target="_blank">COMPRAR LIBRO</a> <!-- Botón al final -->
+
+        <!-- Contenedor para imagen y texto en fila -->
+        <div class="book-modal-header">
+            <div class="book-modal-cover-wrapper">
+                <img id="bookModalCover" src="" alt="Portada del libro" class="book-modal-cover">
+            </div>
+            <div class="book-modal-text-wrapper">
+                <div id="bookModalTitle" class="book-modal-title"></div>
+                <div id="bookModalAuthor" class="book-modal-author"></div>
+                <div id="bookModalYear" class="book-modal-year"></div>
+            </div>
+        </div>
+
+        <!-- Contenedor para video -->
+        <div id="bookModalVideo" class="book-video-container"></div>
+
+        <!-- Información del libro -->
+        <div id="bookModalInfo" class="book-modal-info"></div>
+
+        <!-- Contenedor para los dos botones -->
+        <div class="book-modal-buttons">
+            <a id="bookModalBuy" href="#" class="book-modal-buy" target="_blank">COMPRAR EN AMAZON</a>
+            <a id="bookModalBuyDirect" href="#" class="book-modal-buy book-modal-buy-direct" target="_blank">COMPRAR AL AUTOR DIRECTAMENTE</a>
+        </div>
     </div>
 </div>
 <!-- Modales personalizados -->
@@ -944,19 +1032,40 @@
         document.querySelectorAll('.custom-modal').forEach(m => m.classList.remove('active'));
         document.body.style.overflow = '';
     }
-    function openBookModal(title, author, year, cover, info, videoUrl) {
+    function openBookModal(title, author, year, cover, info, videoUrl, directBuyUrl) {
         document.getElementById('bookModalTitle').textContent = title;
         document.getElementById('bookModalAuthor').textContent = 'por ' + author;
-        document.getElementById('bookModalYear').textContent = year;
+        // Asegurarse de que el año se muestre
+        const yearElement = document.getElementById('bookModalYear');
+        if (year) {
+            yearElement.textContent = year;
+            yearElement.style.display = 'block'; // Mostrar si hay año
+        } else {
+            yearElement.style.display = 'none'; // Ocultar si no hay año
+        }
         document.getElementById('bookModalCover').src = cover;
         document.getElementById('bookModalInfo').textContent = info;
+
+        // Enlace para comprar en Amazon
         document.getElementById('bookModalBuy').href = 'https://www.amazon.es/s?k=' + encodeURIComponent(title);
+
+        // Enlace para comprar directamente al autor (usa directBuyUrl o un valor por defecto)
+        const buyDirectLink = directBuyUrl || 'mailto:contacto@juanperez.com?subject=Compra directa: ' + encodeURIComponent(title);
+        document.getElementById('bookModalBuyDirect').href = buyDirectLink;
+
         // Limpiar video anterior
         document.getElementById('bookModalVideo').innerHTML = '';
+
         // Agregar video si hay una URL proporcionada
         if (videoUrl) {
+            // Asegurar que el contenedor del video sea visible
+            document.getElementById('bookModalVideo').style.display = 'block';
             document.getElementById('bookModalVideo').innerHTML = `<iframe width="560" height="315" src="${videoUrl}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`;
+        } else {
+             // Ocultar el contenedor del video si no hay URL
+             document.getElementById('bookModalVideo').style.display = 'none';
         }
+
         closeModal();
         document.getElementById('bookModal').classList.add('active');
         document.body.style.overflow = 'hidden';
