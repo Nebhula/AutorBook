@@ -1,4 +1,19 @@
-<!DOCTYPE html>
+
+                        <!DOCTYPE html>
+                        <html lang="en">
+                        <head>
+                            <meta charset="UTF-8">
+                            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+              <style>
+                body {
+                  background-color: white; /* Ensure the iframe has a white background */
+                }
+    
+                
+              </style>
+                        </head>
+                        <body>
+                            <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -751,47 +766,93 @@
                     </div>
                 </div>
             </div>
-            
             <h2 class="section-title">Mis Libros Publicados</h2>
             <div class="book-container">
                 <!-- Libro 1 -->
-                <div class="book-item" onclick="openBookModal('El Silencio del Río', 'Juan Pérez', '2018', '<iframe width="560" height="315" src="https://www.youtube.com/embed/ETZwSTJUfw8?si=s1WeaHTzY51Fh9lA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>', 'Novela ganadora del Premio Nacional de Literatura 2019. Una historia conmovedora sobre las relaciones humanas en un pequeño pueblo costero. Explora temas de perdón, redención y el poder sanador de la naturaleza.')">
+                <div class="book-item" onclick="openBookModal({
+                    title: 'El Silencio del Río',
+                    author: 'Juan Pérez',
+                    year: '2018',
+                    cover: 'https://m.media-amazon.com/images/I/61lJydEa4RL.jpg',
+                    info: 'Novela ganadora del Premio Nacional de Literatura 2019. Una historia conmovedora sobre las relaciones humanas en un pequeño pueblo costero. Explora temas de perdón, redención y el poder sanador de la naturaleza.',
+                    videoUrl: 'https://www.youtube.com/embed/ETZwSTJUfw8?si=s1WeaHTzY51Fh9lA',
+                    buyUrl: 'https://www.amazon.com/s?k=El+Silencio+del+Río'
+                })">
                     <img src="https://m.media-amazon.com/images/I/61lJydEa4RL.jpg" alt="El Silencio del Río" class="book-cover">
                     <div class="book-title">El Silencio del Río</div>
                     <div class="book-year">2018</div>
                 </div>
                 <!-- Libro 2 -->
-                <div class="book-item" onclick="openBookModal('Crónicas del Desierto', 'Juan Pérez', '2020', 'https://images.unsplash.com/photo-1589998059171-988d887df646?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80', 'Una colección de relatos cortos ambientados en el desierto de Atacama. Cada historia revela facetas únicas de la vida en uno de los lugares más áridos del planeta, explorando la resiliencia humana y la belleza oculta del paisaje.')">
+                <div class="book-item" onclick="openBookModal({
+                    title: 'Crónicas del Desierto',
+                    author: 'Juan Pérez',
+                    year: '2020',
+                    cover: 'https://images.unsplash.com/photo-1589998059171-988d887df646?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                    info: 'Una colección de relatos cortos ambientados en el desierto de Atacama. Cada historia revela facetas únicas de la vida en uno de los lugares más áridos del planeta, explorando la resiliencia humana y la belleza oculta del paisaje.',
+                    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+                    buyUrl: 'https://www.amazon.com/s?k=Crónicas+del+Desierto'
+                })">
                     <img src="https://images.unsplash.com/photo-1589998059171-988d887df646?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Crónicas del Desierto" class="book-cover">
                     <div class="book-title">Crónicas del Desierto</div>
                     <div class="book-year">2020</div>
                 </div>
                 <!-- Libro 3 -->
-                <div class="book-item" onclick="openBookModal('La Última Página', 'Juan Pérez', '2022', 'https://images.unsplash.com/photo-1531346878377-a5be20888e57?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80', 'Thriller psicológico que explora los límites entre la realidad y la ficción. Un escritor descubre que las páginas finales de su novela se están escribiendo solas, revelando secretos de su propio pasado que preferiría mantener ocultos.')">
+                <div class="book-item" onclick="openBookModal({
+                    title: 'La Última Página',
+                    author: 'Juan Pérez',
+                    year: '2022',
+                    cover: 'https://images.unsplash.com/photo-1531346878377-a5be20888e57?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                    info: 'Thriller psicológico que explora los límites entre la realidad y la ficción. Un escritor descubre que las páginas finales de su novela se están escribiendo solas, revelando secretos de su propio pasado que preferiría mantener ocultos.',
+                    videoUrl: '',
+                    buyUrl: 'https://www.amazon.com/s?k=La+Última+Página'
+                })">
                     <img src="https://images.unsplash.com/photo-1531346878377-a5be20888e57?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="La Última Página" class="book-cover">
                     <div class="book-title">La Última Página</div>
                     <div class="book-year">2022</div>
                 </div>
                 <!-- Libro 4 -->
-                <div class="book-item" onclick="openBookModal('Memorias del Viento', 'Juan Pérez', '2015', 'https://images.unsplash.com/photo-1512820790803-83ca734da794?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80', 'Autobiografía poética que recorre la vida del autor desde su infancia en una pequeña ciudad hasta su consolidación como escritor reconocido. Un viaje introspectivo lleno de anécdotas, reflexiones y el amor por las palabras.')">
+                <div class="book-item" onclick="openBookModal({
+                    title: 'Memorias del Viento',
+                    author: 'Juan Pérez',
+                    year: '2015',
+                    cover: 'https://images.unsplash.com/photo-1512820790803-83ca734da794?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                    info: 'Autobiografía poética que recorre la vida del autor desde su infancia en una pequeña ciudad hasta su consolidación como escritor reconocido. Un viaje introspectivo lleno de anécdotas, reflexiones y el amor por las palabras.',
+                    videoUrl: '',
+                    buyUrl: 'https://www.amazon.com/s?k=Memorias+del+Viento'
+                })">
                     <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Memorias del Viento" class="book-cover">
                     <div class="book-title">Memorias del Viento</div>
                     <div class="book-year">2015</div>
                 </div>
                 <!-- Libro 5 -->
-                <div class="book-item" onclick="openBookModal('El Laberinto de los Sueños', 'Juan Pérez', '2019', 'https://images.unsplash.com/photo-1495640388908-05fa85288e61?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80', 'Fantasía épica ambientada en un mundo donde los sueños cobran vida. Un joven debe navegar por un reino onírico para salvar a su pueblo de una pesadilla que amenaza con destruir la realidad. Una aventura llena de criaturas mágicas y giros inesperados.')">
+                <div class="book-item" onclick="openBookModal({
+                    title: 'El Laberinto de los Sueños',
+                    author: 'Juan Pérez',
+                    year: '2019',
+                    cover: 'https://images.unsplash.com/photo-1495640388908-05fa85288e61?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                    info: 'Fantasía épica ambientada en un mundo donde los sueños cobran vida. Un joven debe navegar por un reino onírico para salvar a su pueblo de una pesadilla que amenaza con destruir la realidad. Una aventura llena de criaturas mágicas y giros inesperados.',
+                    videoUrl: '',
+                    buyUrl: 'https://www.amazon.com/s?k=El+Laberinto+de+los+Sueños'
+                })">
                     <img src="https://images.unsplash.com/photo-1495640388908-05fa85288e61?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="El Laberinto de los Sueños" class="book-cover">
                     <div class="book-title">El Laberinto de los Sueños</div>
                     <div class="book-year">2019</div>
                 </div>
                 <!-- Libro 6 -->
-                <div class="book-item" onclick="openBookModal('Diálogos con el Silencio', 'Juan Pérez', '2021', 'https://images.unsplash.com/photo-1535732820275-9ffd998cac22?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80', 'Ensayo filosófico sobre la importancia del silencio en la comunicación moderna. El autor explora cómo el exceso de ruido en la era digital afecta nuestra capacidad de escuchar, reflexionar y conectar con los demás de manera auténtica.')">
+                <div class="book-item" onclick="openBookModal({
+                    title: 'Diálogos con el Silencio',
+                    author: 'Juan Pérez',
+                    year: '2021',
+                    cover: 'https://images.unsplash.com/photo-1535732820275-9ffd998cac22?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                    info: 'Ensayo filosófico sobre la importancia del silencio en la comunicación moderna. El autor explora cómo el exceso de ruido en la era digital afecta nuestra capacidad de escuchar, reflexionar y conectar con los demás de manera auténtica.',
+                    videoUrl: '',
+                    buyUrl: 'https://www.amazon.com/s?k=Diálogos+con+el+Silencio'
+                })">
                     <img src="https://images.unsplash.com/photo-1535732820275-9ffd998cac22?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Diálogos con el Silencio" class="book-cover">
                     <div class="book-title">Diálogos con el Silencio</div>
                     <div class="book-year">2021</div>
                 </div>
             </div>
-            
             <div class="info-container">
                 <div class="info-block" onclick="openCustomModal('eventos')">
                     <div class="custom-label">PRÓXIMOS EVENTOS</div>
@@ -879,9 +940,9 @@
         <div id="bookModalTitle" class="book-modal-title"></div>
         <div id="bookModalAuthor" class="book-modal-author"></div>
         <div id="bookModalYear" class="book-modal-year"></div>
-        <div id="bookModalInfo" class="book-modal-info"></div>
-        <div id="bookModalVideo" class="book-video-container"></div>
-        <a id="bookModalBuy" href="#" class="book-modal-buy" target="_blank">COMPRAR LIBRO</a>
+        <div id="bookModalVideo" class="book-video-container"></div> <!-- Video aquí -->
+        <div id="bookModalInfo" class="book-modal-info"></div> <!-- Texto después del video -->
+        <a id="bookModalBuy" href="#" class="book-modal-buy" target="_blank">COMPRAR LIBRO</a> <!-- Botón al final -->
     </div>
 </div>
 <!-- Modales personalizados -->
@@ -946,22 +1007,19 @@
         document.querySelectorAll('.custom-modal').forEach(m => m.classList.remove('active'));
         document.body.style.overflow = '';
     }
-    function openBookModal(title, author, year, cover, info) {
-        document.getElementById('bookModalTitle').textContent = title;
-        document.getElementById('bookModalAuthor').textContent = 'por ' + author;
-        document.getElementById('bookModalYear').textContent = year;
-        document.getElementById('bookModalCover').src = cover;
-        document.getElementById('bookModalInfo').textContent = info;
-        document.getElementById('bookModalBuy').href = 'https://www.amazon.es/s?k=' + encodeURIComponent(title);
-        
+    function openBookModal(bookData) {
+        document.getElementById('bookModalTitle').textContent = bookData.title;
+        document.getElementById('bookModalAuthor').textContent = 'por ' + bookData.author;
+        document.getElementById('bookModalYear').textContent = bookData.year;
+        document.getElementById('bookModalCover').src = bookData.cover;
+        document.getElementById('bookModalInfo').textContent = bookData.info;
+        document.getElementById('bookModalBuy').href = bookData.buyUrl || '#';
         // Limpiar video anterior
         document.getElementById('bookModalVideo').innerHTML = '';
-        
-        // Agregar video solo para el primer libro
-        if (title === 'El Silencio del Río') {
-            document.getElementById('bookModalVideo').innerHTML = '<iframe width="560" height="315" src="https://www.youtube.com/embed/ETZwSTJUfw8?si=s1WeaHTzY51Fh9lA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>';
+        // Agregar video si hay una URL proporcionada
+        if (bookData.videoUrl) {
+            document.getElementById('bookModalVideo').innerHTML = `<iframe width="560" height="315" src="${bookData.videoUrl}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`;
         }
-        
         closeModal();
         document.getElementById('bookModal').classList.add('active');
         document.body.style.overflow = 'hidden';
@@ -969,3 +1027,12 @@
 </script>
 </body>
 </html>
+
+
+    
+              <script>
+                              
+              </script>
+                        </body>
+                        </html>
+                    
