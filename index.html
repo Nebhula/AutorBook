@@ -519,7 +519,8 @@
             .card-container {
                 max-width: 450px;
                 padding: 16px;
-                margin-top: 1250px;
+                /* Cambio solicitado: de 1800px a 1200px */
+                margin-top: 1200px;
             }
             .card {
                 border-radius: var(--border-radius);
@@ -612,11 +613,11 @@
             padding: 20px;
         }
         .book-modal-cover {
-            width: 120px;
+            /* width: 120px; Ancho movido al contenedor */
             aspect-ratio: 2/3;
             object-fit: cover;
             border-radius: 8px;
-            margin: 0 auto 15px;
+            /* margin: 0 auto 15px; Margen movido al contenedor */
             box-shadow: 0 8px 16px rgba(0,0,0,0.2);
             display: block;
             background: transparent;
@@ -638,20 +639,6 @@
             margin-bottom: 15px;
             text-align: left;
             line-height: 1.5;
-        }
-        .book-modal-buy {
-            display: inline-block;
-            padding: 10px 20px;
-            background: #3498db;
-            color: white;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 600;
-            margin-top: 10px;
-            transition: background 0.3s;
-        }
-        .book-modal-buy:hover {
-            background: #2980b9;
         }
         .book-video-container {
             position: relative;
@@ -695,10 +682,11 @@
         }
 
         /* --- Nuevos estilos para el modal de libro --- */
+        /* Aplicamos el diseño en fila por defecto, incluyendo móviles */
         .book-modal-header {
             display: flex;
-            flex-direction: column; /* Por defecto en columna */
-            align-items: center;
+            flex-direction: row; /* Siempre en fila */
+            align-items: flex-start; /* Alinea elementos al inicio */
             gap: 15px;
             margin-bottom: 15px;
         }
@@ -707,34 +695,54 @@
             flex-shrink: 0; /* Evita que la imagen se encoja */
         }
 
+        .book-modal-cover {
+            width: 100px; /* Ancho fijo para la imagen */
+            margin: 0; /* Eliminar margen automático */
+        }
+
+        /* Aseguramos que el texto esté alineado a la izquierda */
         .book-modal-text-wrapper {
-            text-align: center; /* Centra el texto debajo de la imagen por defecto */
+            text-align: left; /* Alinea el texto a la izquierda */
+            flex-grow: 1; /* Permite que el texto crezca */
         }
 
-        /* Media query para pantallas medianas y grandes */
-        @media (min-width: 600px) {
+        .book-modal-title {
+            text-align: left; /* Asegura alineación izquierda del título */
+            margin-bottom: 4px; /* Reducir margen inferior */
+        }
+        .book-modal-author {
+            text-align: left; /* Asegura alineación izquierda del autor */
+            margin-bottom: 2px; /* Reducir margen inferior */
+        }
+        .book-modal-year {
+            text-align: left; /* Asegura alineación izquierda del año */
+            font-size: 13px; /* Tamaño de fuente más pequeño */
+            color: var(--text-light); /* Color más suave */
+        }
+
+        /* Media query para revertir a columna solo si el ancho es muy limitado */
+        /* Puedes ajustar el breakpoint (max-width) según tus necesidades */
+        @media (max-width: 320px) {
             .book-modal-header {
-                flex-direction: row; /* En fila */
-                text-align: left; /* Alinea el texto a la izquierda */
-                align-items: flex-start; /* Alinea elementos al inicio */
+                flex-direction: column; /* Cambia a columna en pantallas muy pequeñas */
+                align-items: center; /* Centra en columna */
             }
 
-            .book-modal-text-wrapper {
-                text-align: left; /* Alinea el texto a la izquierda */
-                flex-grow: 1; /* Permite que el texto crezca */
+            .book-modal-cover {
+                width: 120px; /* Ancho más grande en columna */
+                margin: 0 auto 15px; /* Margen automático en columna */
             }
 
-             .book-modal-title {
-                 text-align:left; /* Asegura alineación izquierda del título */
-             }
-             .book-modal-author {
-                 text-align:left; /* Asegura alineación izquierda del autor */
-             }
-             .book-modal-year {
-                 text-align:left; /* Asegura alineación izquierda del año */
-             }
+            .book-modal-text-wrapper,
+            .book-modal-title,
+            .book-modal-author,
+            .book-modal-year {
+                text-align: center; /* Centra el texto en modo columna */
+            }
         }
 
+
+        /* Estilos para los botones (manteniendo los de la versión anterior) */
         .book-modal-buttons {
             display: flex;
             flex-wrap: wrap; /* Permite que los botones se envuelvan en pantallas pequeñas */
@@ -752,6 +760,19 @@
             text-decoration: none; /* Asegura que se vea como botón */
             display: inline-block; /* Asegura que se comporte como bloque en línea */
              border-radius: 6px; /* Añadido border-radius */
+             font-weight: 600; /* Negrita */
+             font-size: 13px; /* Tamaño de fuente */
+             transition: background 0.3s; /* Transición suave */
+        }
+        /* Estilos específicos para el botón de comprar en Amazon */
+        .book-modal-buy-amazon {
+            background-color: #3498db; /* Azul Amazon */
+            color: white;
+            border: 1px solid #3498db;
+        }
+        .book-modal-buy-amazon:hover {
+            background-color: #2980b9;
+            border-color: #2980b9;
         }
         /* Estilos específicos para el botón de comprar al autor */
         .book-modal-buy-direct {
@@ -825,37 +846,37 @@
             <h2 class="section-title">Mis Libros Publicados</h2>
             <div class="book-container">
                 <!-- Libro 1 -->
-                <div class="book-item" onclick="openBookModal('El Silencio del Río', 'Juan Pérez', '2018', 'https://m.media-amazon.com/images/I/61lJydEa4RL.jpg', 'Novela ganadora del Premio Nacional de Literatura 2019. Una historia conmovedora sobre las relaciones humanas en un pequeño pueblo costero. Explora temas de perdón, redención y el poder sanador de la naturaleza.', 'https://www.youtube.com/embed/ETZwSTJUfw8?si=s1WeaHTzY51Fh9lA', 'https://www.editorialautor.com/comprar/el-silencio-del-rio')">
+                <div class="book-item" onclick="openBookModal('El Silencio del Río', 'Juan Pérez', '2018', 'https://m.media-amazon.com/images/I/61lJydEa4RL.jpg', 'Novela ganadora del Premio Nacional de Literatura 2019. Una historia conmovedora sobre las relaciones humanas en un pequeño pueblo costero. Explora temas de perdón, redención y el poder sanador de la naturaleza.', 'https://www.youtube.com/embed/ETZwSTJUfw8?si=s1WeaHTzY51Fh9lA')">
                     <img src="https://m.media-amazon.com/images/I/61lJydEa4RL.jpg" alt="El Silencio del Río" class="book-cover">
                     <div class="book-title">El Silencio del Río</div>
                     <div class="book-year">2018</div>
                 </div>
                 <!-- Libro 2 -->
-                <div class="book-item" onclick="openBookModal('Crónicas del Desierto', 'Juan Pérez', '2020', 'https://images.unsplash.com/photo-1589998059171-988d887df646?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80', 'Una colección de relatos cortos ambientados en el desierto de Atacama. Cada historia revela facetas únicas de la vida en uno de los lugares más áridos del planeta, explorando la resiliencia humana y la belleza oculta del paisaje.', 'https://www.youtube.com/embed/dQw4w9WgXcQ', '')">
+                <div class="book-item" onclick="openBookModal('Crónicas del Desierto', 'Juan Pérez', '2020', 'https://images.unsplash.com/photo-1589998059171-988d887df646?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80', 'Una colección de relatos cortos ambientados en el desierto de Atacama. Cada historia revela facetas únicas de la vida en uno de los lugares más áridos del planeta, explorando la resiliencia humana y la belleza oculta del paisaje.', 'https://www.youtube.com/embed/dQw4w9WgXcQ')">
                     <img src="https://images.unsplash.com/photo-1589998059171-988d887df646?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Crónicas del Desierto" class="book-cover">
                     <div class="book-title">Crónicas del Desierto</div>
                     <div class="book-year">2020</div>
                 </div>
                 <!-- Libro 3 -->
-                <div class="book-item" onclick="openBookModal('La Última Página', 'Juan Pérez', '2022', 'https://images.unsplash.com/photo-1531346878377-a5be20888e57?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80', 'Thriller psicológico que explora los límites entre la realidad y la ficción. Un escritor descubre que las páginas finales de su novela se están escribiendo solas, revelando secretos de su propio pasado que preferiría mantener ocultos.', '', '')">
+                <div class="book-item" onclick="openBookModal('La Última Página', 'Juan Pérez', '2022', 'https://images.unsplash.com/photo-1531346878377-a5be20888e57?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80', 'Thriller psicológico que explora los límites entre la realidad y la ficción. Un escritor descubre que las páginas finales de su novela se están escribiendo solas, revelando secretos de su propio pasado que preferiría mantener ocultos.', '')">
                     <img src="https://images.unsplash.com/photo-1531346878377-a5be20888e57?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="La Última Página" class="book-cover">
                     <div class="book-title">La Última Página</div>
                     <div class="book-year">2022</div>
                 </div>
                 <!-- Libro 4 -->
-                <div class="book-item" onclick="openBookModal('Memorias del Viento', 'Juan Pérez', '2015', 'https://images.unsplash.com/photo-1512820790803-83ca734da794?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80', 'Autobiografía poética que recorre la vida del autor desde su infancia en una pequeña ciudad hasta su consolidación como escritor reconocido. Un viaje introspectivo lleno de anécdotas, reflexiones y el amor por las palabras.', '', '')">
+                <div class="book-item" onclick="openBookModal('Memorias del Viento', 'Juan Pérez', '2015', 'https://images.unsplash.com/photo-1512820790803-83ca734da794?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80', 'Autobiografía poética que recorre la vida del autor desde su infancia en una pequeña ciudad hasta su consolidación como escritor reconocido. Un viaje introspectivo lleno de anécdotas, reflexiones y el amor por las palabras.', '')">
                     <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Memorias del Viento" class="book-cover">
                     <div class="book-title">Memorias del Viento</div>
                     <div class="book-year">2015</div>
                 </div>
                 <!-- Libro 5 -->
-                <div class="book-item" onclick="openBookModal('El Laberinto de los Sueños', 'Juan Pérez', '2019', 'https://images.unsplash.com/photo-1495640388908-05fa85288e61?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80', 'Fantasía épica ambientada en un mundo donde los sueños cobran vida. Un joven debe navegar por un reino onírico para salvar a su pueblo de una pesadilla que amenaza con destruir la realidad. Una aventura llena de criaturas mágicas y giros inesperados.', '', '')">
+                <div class="book-item" onclick="openBookModal('El Laberinto de los Sueños', 'Juan Pérez', '2019', 'https://images.unsplash.com/photo-1495640388908-05fa85288e61?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80', 'Fantasía épica ambientada en un mundo donde los sueños cobran vida. Un joven debe navegar por un reino onírico para salvar a su pueblo de una pesadilla que amenaza con destruir la realidad. Una aventura llena de criaturas mágicas y giros inesperados.', '')">
                     <img src="https://images.unsplash.com/photo-1495640388908-05fa85288e61?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="El Laberinto de los Sueños" class="book-cover">
                     <div class="book-title">El Laberinto de los Sueños</div>
                     <div class="book-year">2019</div>
                 </div>
                 <!-- Libro 6 -->
-                <div class="book-item" onclick="openBookModal('Diálogos con el Silencio', 'Juan Pérez', '2021', 'https://images.unsplash.com/photo-1535732820275-9ffd998cac22?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80', 'Ensayo filosófico sobre la importancia del silencio en la comunicación moderna. El autor explora cómo el exceso de ruido en la era digital afecta nuestra capacidad de escuchar, reflexionar y conectar con los demás de manera auténtica.', '', '')">
+                <div class="book-item" onclick="openBookModal('Diálogos con el Silencio', 'Juan Pérez', '2021', 'https://images.unsplash.com/photo-1535732820275-9ffd998cac22?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80', 'Ensayo filosófico sobre la importancia del silencio en la comunicación moderna. El autor explora cómo el exceso de ruido en la era digital afecta nuestra capacidad de escuchar, reflexionar y conectar con los demás de manera auténtica.', '')">
                     <img src="https://images.unsplash.com/photo-1535732820275-9ffd998cac22?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Diálogos con el Silencio" class="book-cover">
                     <div class="book-title">Diálogos con el Silencio</div>
                     <div class="book-year">2021</div>
@@ -965,7 +986,7 @@
 
         <!-- Contenedor para los dos botones -->
         <div class="book-modal-buttons">
-            <a id="bookModalBuy" href="#" class="book-modal-buy" target="_blank">COMPRAR EN AMAZON</a>
+            <a id="bookModalBuy" href="#" class="book-modal-buy book-modal-buy-amazon" target="_blank">COMPRAR EN AMAZON</a>
             <a id="bookModalBuyDirect" href="#" class="book-modal-buy book-modal-buy-direct" target="_blank">COMPRAR AL AUTOR DIRECTAMENTE</a>
         </div>
     </div>
@@ -1032,7 +1053,7 @@
         document.querySelectorAll('.custom-modal').forEach(m => m.classList.remove('active'));
         document.body.style.overflow = '';
     }
-    function openBookModal(title, author, year, cover, info, videoUrl, directBuyUrl) {
+    function openBookModal(title, author, year, cover, info, videoUrl) {
         document.getElementById('bookModalTitle').textContent = title;
         document.getElementById('bookModalAuthor').textContent = 'por ' + author;
         // Asegurarse de que el año se muestre
@@ -1046,11 +1067,12 @@
         document.getElementById('bookModalCover').src = cover;
         document.getElementById('bookModalInfo').textContent = info;
 
-        // Enlace para comprar en Amazon
-        document.getElementById('bookModalBuy').href = 'https://www.amazon.es/s?k=' + encodeURIComponent(title);
+        // Enlace para comprar en Amazon (usa amazonUrl o un valor por defecto)
+        const buyAmazonLink = 'https://www.amazon.es/s?k=' + encodeURIComponent(title);
+        document.getElementById('bookModalBuy').href = buyAmazonLink;
 
         // Enlace para comprar directamente al autor (usa directBuyUrl o un valor por defecto)
-        const buyDirectLink = directBuyUrl || 'mailto:contacto@juanperez.com?subject=Compra directa: ' + encodeURIComponent(title);
+        const buyDirectLink = 'mailto:contacto@juanperez.com?subject=Compra directa: ' + encodeURIComponent(title);
         document.getElementById('bookModalBuyDirect').href = buyDirectLink;
 
         // Limpiar video anterior
